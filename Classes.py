@@ -12,7 +12,7 @@ class Category:
         self.name = name
         self.description = description
         self.goods = goods
-        self.goods_quantity = len(goods)
+        self.goods_quantity = len(goods) #считаем количество продуктов в категории
 
         Category.number_of_categories += 1
 
