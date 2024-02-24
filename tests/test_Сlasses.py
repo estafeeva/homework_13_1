@@ -1,6 +1,5 @@
 from Classes import Product
 from Classes import Category
-import main
 import pytest
 
 
