@@ -1,6 +1,5 @@
 from Classes import Product
 from Classes import Category
-import main
 import pytest
 
 
@@ -28,21 +27,39 @@ def category_2():
     return Category('Одежда', 'Одежда для спорта', [jacket, shorts, cap])
 
 def test_init(ball):
+    """
+    тест - корректность инициализации объектов класса Product
+    """
     assert ball.name == 'Мяч'
     assert ball.quantity == 12
 
 def test_init_Category(category_1):
+    """
+    тест - корректность инициализации объектов класса Category
+    """
     assert category_1.name == 'Спорттовары'
     assert category_1.goods == [ball, racket]
 
 def test_count(category_1):
+    """
+    тест - подсчет количества категорий
+    """
     assert Category.number_of_categories == 2
 
 def test_count(category_2):
+    """
+    тест - подсчет количества категорий
+    """
     assert Category.number_of_categories == 2
 
 def test_count(category_1):
+    """
+    тест - подсчет количества продуктов
+    """
     assert category_1.goods_quantity == 2
 
 def test_count(category_2):
+    """
+    тест - подсчет количества продуктов
+    """
     assert category_2.goods_quantity == 3
