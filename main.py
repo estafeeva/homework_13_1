@@ -18,6 +18,6 @@ print(category_1.goods)
 
 hat = Product.add_new_product('Шляпа', 'Просто шляпа', -250.50, 1)
 print(hat.name)
-"""
 
-
+racket.price = -5.00
+print(racket.price)"""

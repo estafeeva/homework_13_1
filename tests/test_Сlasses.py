@@ -60,7 +60,17 @@ def test_count_goods(category_1, category_2):
 
 def test_add_new_product(jacket):
     """
-        тест - на создание нового продукта с помощью класс-метода
-        """
+    тест - на создание нового продукта с помощью класс-метода
+    """
     jacket_2 = Product.add_new_product('Куртка', 'Куртка детская', 1500.90, 10)
     assert jacket.name == jacket_2.name
+
+def test_change_price(ball):
+    """
+    тест - на изменение стоимости продукта (если <= 0, то
+    стоимость не меняется, если > 0, то меняется на новое значение
+    """
+    ball.price = -4
+    assert ball.price == 350.50
+    ball.price = 400
+    assert ball.price == 400
