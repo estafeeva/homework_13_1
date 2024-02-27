@@ -14,10 +14,16 @@ category_1 = Category('Спорттовары', 'Товары для спорт�
 category_2 = Category('Одежда', 'Одежда для спорта', [jacket, shorts, cap])
 
 
+#print(category_1.goods)
+data = {'name': 'Шляпа',
+        'description': 'Просто шляпа',
+        'price': 250.50,
+        'quantity': 1}
+hat = Product.add_new_product(**data)
+print(hat.name)
+category_1.add_product(hat)
 print(category_1.goods)
 
-hat = Product.add_new_product('Шляпа', 'Просто шляпа', -250.50, 1)
-print(hat.name)
-
 racket.price = -5.00
-print(racket.price)"""
+print(racket.price)
+"""

@@ -62,7 +62,11 @@ def test_add_new_product(jacket):
     """
     тест - на создание нового продукта с помощью класс-метода
     """
-    jacket_2 = Product.add_new_product('Куртка', 'Куртка детская', 1500.90, 10)
+    data = {'name': 'Куртка',
+     'description': 'Куртка детская',
+     'price': 1500.90,
+     'quantity': 10}
+    jacket_2 = Product.add_new_product(**data)
     assert jacket.name == jacket_2.name
 
 def test_change_price(ball):
