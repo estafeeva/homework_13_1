@@ -2,7 +2,7 @@ from Classes import Product
 from Classes import Category
 
 """
-ball = Product('Мяч', 'Футбольный мяч', 350.50, 12)
+ball = Product('Мяч', 'Футбольный мяч', 300.00, 10)
 racket = Product('Ракетка', 'Теннисная ракетка', 3000.00, 20)
 jacket = Product('Куртка', 'Куртка детская', 1500.90, 10)
 shorts = Product('Шорты', 'Шорты спортивные', 700.20, 2)
@@ -26,4 +26,10 @@ print(category_1.goods)
 
 racket.price = -5.00
 print(racket.price)
+print(ball)
+print(len(ball))
+
+print(category_2)
+print(len(category_2))
+print(ball + racket)
 """

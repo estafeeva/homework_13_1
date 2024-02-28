@@ -28,6 +28,16 @@ class Product:
         else:
             self.__price = new_price
 
+    def __str__(self):
+        """Название продукта, 80 руб. Остаток: 15 шт."""
+        return f'{self.name}, {self.quantity} руб. Остаток: {self.quantity} шт.'
+
+    def __len__(self):
+        return len(self.name)
+
+    def __add__(self, other):
+        return self.price * self.quantity + other.price * other.quantity
+
 
 class Category:
     """Класс для задания категории."""
@@ -56,4 +66,14 @@ class Category:
             result += f'{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n'
         return result
 
+    def __str__(self):
+        """Название категории, количество продуктов: 200 шт."""
 
+        return f'{self.name}, количество продуктов: {len(self)} шт.'
+
+    def __len__(self):
+        """для подсчета количества продуктов в категории"""
+        i = 0  # переменная для подсчета продуктов в категории
+        for good in self.__goods:
+            i += good.quantity
+        return i

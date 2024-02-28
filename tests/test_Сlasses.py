@@ -5,7 +5,7 @@ import pytest
 
 @pytest.fixture()
 def ball():
-    return Product('Мяч', 'Футбольный мяч', 350.50, 12)
+    return Product('Мяч', 'Футбольный мяч', 300, 10)
 
 @pytest.fixture()
 def racket():
@@ -78,3 +78,15 @@ def test_change_price(ball):
     assert ball.price == 350.50
     ball.price = 400
     assert ball.price == 400
+
+def test_len(ball, category_1):
+    assert len(ball) == len("Мяч")
+    assert len(category_1) == 30
+
+def test_add_two_products(ball, racket, jacket, cap):
+    assert ball+racket == 63000
+    assert jacket+cap == 16261.50
+
+def test_str(ball, category_1):
+    assert str(ball) == f'Мяч, 10 руб. Остаток: 10 шт.'
+    assert str(category_1) == f'Спорттовары, количество продуктов: 30 шт.'
