@@ -56,7 +56,10 @@ class Category:
         Category.number_of_categories += 1
 
     def add_product(self, product: Product):
-        self.__goods.append(product)
+        if isinstance(product, Product):
+            self.__goods.append(product)
+        else:
+            raise TypeError("Добавить можно только элемент класса Product")
 
 
     @property
