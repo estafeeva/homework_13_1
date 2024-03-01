@@ -36,7 +36,31 @@ class Product:
         return len(self.name)
 
     def __add__(self, other):
-        return self.price * self.quantity + other.price * other.quantity
+        """функция сложения продуктов, проверяет, чтобы можно было
+        складывать товары только из одинаковых классов продуктов."""
+        if type(self) == type(other):
+            return self.price * self.quantity + other.price * other.quantity
+        else:
+            raise TypeError("Можно складывать товары только из одинаковых классов продуктов")
+
+class Smartphone(Product):
+    """Смартфон - класс-наследник класса Продукты"""
+    def __init__(self, name, description, price, quantity, efficiency: int, model, memory, color):
+        super().__init__(name, description, price, quantity)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory #объем встроенной памяти
+        self.color = color
+
+
+class Lawn_grass(Product):
+    """Газоная трава - класс-наследник класса Продукты"""
+    def __init__(self, name: str, description: str, price: float, quantity: int, country: str, period: int, color: str):
+        super().__init__(name, description, price, quantity)
+        self.__price = price
+        self.country = country
+        self.period = period
+        self.color = color
 
 
 class Category:

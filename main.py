@@ -1,4 +1,6 @@
 from Classes import Product
+from Classes import Lawn_grass
+from Classes import Smartphone
 from Classes import Category
 
 """
@@ -29,7 +31,18 @@ print(racket.price)
 print(ball)
 print(len(ball))
 
-print(category_2)
-print(len(category_2))
-print(ball + racket)
-"""
+print(issubclass(Lawn_grass, Product))
+grass = Lawn_grass('Газон', 'медленнорастущий газон', 1000.00, 10, "Россия", 3, "салатовый")
+category_1.add_product(grass)
+print(category_1)
+print(len(category_1))
+print(grass + grass)
+
+iphone = Smartphone('iPhone', 'телефон', 100000.00, 20, 2, '15', 256, 'white')
+iphone.price = -5.00
+print(iphone.price)
+print(type(grass))
+if type(grass) == type(iphone):
+        print('да')
+else:
+        print('нет')"""
