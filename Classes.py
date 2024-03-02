@@ -57,7 +57,6 @@ class Lawn_grass(Product):
     """Газоная трава - класс-наследник класса Продукты"""
     def __init__(self, name: str, description: str, price: float, quantity: int, country: str, period: int, color: str):
         super().__init__(name, description, price, quantity)
-        self.__price = price
         self.country = country
         self.period = period
         self.color = color
