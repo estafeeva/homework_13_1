@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 
 class MixinPrint:
+    """миксин для логирования информации о создаваемом объекте"""
 
     def __init__(self):
         print(f'Создан объект {repr(self)}')
@@ -20,6 +21,11 @@ class MixinPrint:
 
 
 class BaseProduct(ABC):
+    """
+    общий абстрактный класс для всех продуктов;
+    выделен общий функционал, который должен быть у каждого продукта,
+    и описан в абстрактных методах
+    """
     @abstractmethod
     def __init__(self):
         pass
