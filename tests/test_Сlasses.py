@@ -1,4 +1,7 @@
+from abc import ABC, abstractmethod
 from Classes import Product
+from Classes import BaseProduct
+from Classes import MixinPrint
 from Classes import Lawn_grass
 from Classes import Smartphone
 from Classes import Category
@@ -109,9 +112,19 @@ def test_is_subclass(grass):
     assert issubclass(Lawn_grass, Product) == True
     assert issubclass(Lawn_grass, Smartphone) == False
     assert isinstance(grass, Lawn_grass) == True
+    assert issubclass(Lawn_grass, MixinPrint) == True
+    assert issubclass(Product, BaseProduct) == True
+
 
 def test_str(ball, grass, category_1, iphone):
     assert str(ball) == f'Мяч, 10 руб. Остаток: 10 шт.'
     assert str(grass) == f'Газон, 10 руб. Остаток: 10 шт.'
     assert str(category_1) == f'Спорттовары, количество продуктов: 30 шт.'
     assert str(iphone) == f'iPhone, 20 руб. Остаток: 20 шт.'
+
+
+def test_new(iphone, grass, category_1, ball, racket):
+    assert repr(Smartphone('iPhone', 'телефон', 100000.00, 20, 2, '15', 256, 'white')) == 'Smartphone(iPhone, телефон, 100000.0, 20, 2, 15, 256, white)'
+    assert repr(grass) == 'Lawn_grass(Газон, медленнорастущий газон, 1000.0, 10, Россия, 3, салатовый)'
+    assert repr(category_1) == 'Category(Спорттовары, Товары для спорта, [Product(Мяч, Футбольный мяч, 300, 10), Product(Ракетка, Теннисная ракетка, 3000.0, 20)], 2)'
+

@@ -1,9 +1,12 @@
+from abc import ABC, abstractmethod
 from Classes import Product
+from Classes import BaseProduct
+from Classes import MixinPrint
 from Classes import Lawn_grass
 from Classes import Smartphone
 from Classes import Category
-
 """
+
 ball = Product('Мяч', 'Футбольный мяч', 300.00, 10)
 racket = Product('Ракетка', 'Теннисная ракетка', 3000.00, 20)
 jacket = Product('Куртка', 'Куртка детская', 1500.90, 10)
@@ -45,4 +48,9 @@ print(type(grass))
 if type(grass) == type(iphone):
         print('да')
 else:
-        print('нет')"""
+        print('нет')
+
+print(repr(grass.__dict__))
+print(repr(ball.__dict__))
+print(ball.__repr__)
+print(iphone)"""
