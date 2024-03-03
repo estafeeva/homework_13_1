@@ -1,12 +1,52 @@
-class Product:
+from abc import ABC, abstractmethod
+
+class MixinPrint:
+
+    def __init__(self):
+        print(f'Создан объект {repr(self)}')
+
+    def __repr__(self):
+        k1 = ""
+        k2 = ", "
+        i = 0
+        for value in self.__dict__.values():
+            i += 1
+            if i <= len(self.__dict__.values())-4:
+                k2 += f'{value}, '
+            else:
+                k1 += f'{value}, '
+
+        return f'{self.__class__.__name__}({k1[:-2]}{k2[:-2]})'
+
+
+class BaseProduct(ABC):
+    @abstractmethod
+    def __init__(self):
+        pass
+
+    @abstractmethod
+    def __str__(self):
+        pass
+
+    @abstractmethod
+    def __len__(self):
+        pass
+
+    @abstractmethod
+    def __add__(self, other):
+        pass
+
+class Product(MixinPrint, BaseProduct):
     """Класс для задания продукта."""
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
+
         """Метод для инициализации экземпляра класса. Задаем значения атрибутам экземпляра."""
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
     @classmethod
     def add_new_product(cls, **data):
@@ -43,26 +83,27 @@ class Product:
         else:
             raise TypeError("Можно складывать товары только из одинаковых классов продуктов")
 
+
 class Smartphone(Product):
     """Смартфон - класс-наследник класса Продукты"""
     def __init__(self, name, description, price, quantity, efficiency: int, model, memory, color):
-        super().__init__(name, description, price, quantity)
+
         self.efficiency = efficiency
         self.model = model
         self.memory = memory #объем встроенной памяти
         self.color = color
-
+        super().__init__(name, description, price, quantity)
 
 class Lawn_grass(Product):
     """Газоная трава - класс-наследник класса Продукты"""
     def __init__(self, name: str, description: str, price: float, quantity: int, country: str, period: int, color: str):
-        super().__init__(name, description, price, quantity)
+
         self.country = country
         self.period = period
         self.color = color
+        super().__init__(name, description, price, quantity)
 
-
-class Category:
+class Category(MixinPrint):
     """Класс для задания категории."""
     # Переменная на уровне класса для подсчета количества категорий
     number_of_categories = 0
@@ -72,7 +113,9 @@ class Category:
         self.name = name
         self.description = description
         self.__goods = goods
+        super().__init__()
         self.goods_quantity = len(goods) #количество товаров в списке одной категории
+
 
         """при увеличении количества категорий к переменной 
         number_of_categories обращаемся от класса"""
