@@ -39,7 +39,9 @@ def category_1(ball, racket):
 def category_2(jacket, shorts, cap):
     return Category('Одежда', 'Одежда для спорта', [jacket, shorts, cap])
 
-
+@pytest.fixture()
+def category_3():
+    return Category('Пустая', 'Нет товаров', [])
 def test_count(category_1, category_2):
     """
     тест - подсчет количества категорий
@@ -80,6 +82,7 @@ def test_add_new_product(jacket):
      'description': 'Куртка детская',
      'price': 1500.90,
      'quantity': 10}
+
     jacket_2 = Product.add_new_product(**data)
     assert jacket.name == jacket_2.name
 
@@ -127,4 +130,23 @@ def test_new(iphone, grass, category_1, ball, racket):
     assert repr(Smartphone('iPhone', 'телефон', 100000.00, 20, 2, '15', 256, 'white')) == 'Smartphone(iPhone, телефон, 100000.0, 20, 2, 15, 256, white)'
     assert repr(grass) == 'Lawn_grass(Газон, медленнорастущий газон, 1000.0, 10, Россия, 3, салатовый)'
     assert repr(category_1) == 'Category(Спорттовары, Товары для спорта, [Product(Мяч, Футбольный мяч, 300, 10), Product(Ракетка, Теннисная ракетка, 3000.0, 20)], 2)'
+
+def test_average(category_3, category_1, ball, racket):
+    assert category_3.average() == 0
+    assert category_1.average() == 1650
+
+def test_add_product(category_1, ball, racket, grass):
+    category_1.add_product(grass)
+    assert len(category_1) == 40
+    data = {'name': 'Мешок',
+            'description': 'Пустой мешок',
+            'price': 100,
+            'quantity': 0}
+    bag = Product.add_new_product(**data)
+    bag_2 = 8
+    with pytest.raises(ValueError):
+        category_1.add_product(bag)
+    with pytest.raises(TypeError):
+        category_1.add_product(bag_2)
+
 
