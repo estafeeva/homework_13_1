@@ -128,11 +128,33 @@ class Category(MixinPrint):
         Category.number_of_categories += 1
 
     def add_product(self, product: Product):
+        """Добавляет новый продукт в категорию.
+        Проверяет, что продукт класса Product и количество товаров не равно 0"""
+
         if isinstance(product, Product):
-            self.__goods.append(product)
+            if product.quantity == 0:
+                raise ValueError("Товар с нулевым количеством не может быть добавлен")
+            else:
+                self.__goods.append(product)
         else:
             raise TypeError("Добавить можно только элемент класса Product")
 
+
+    def average(self):
+        """Считает среднюю цену продуктов категории.
+        При делении на ноль возвращает 0."""
+
+        sum_price = 0
+        i = 0
+        try:
+            for good in self.__goods:
+                sum_price += good.price
+                i += 1
+
+            average_price = sum_price / i
+            return average_price
+        except ZeroDivisionError:
+            return 0
 
     @property
     def goods(self):  # геттер

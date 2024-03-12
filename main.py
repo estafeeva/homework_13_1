@@ -5,8 +5,8 @@ from Classes import MixinPrint
 from Classes import Lawn_grass
 from Classes import Smartphone
 from Classes import Category
-"""
 
+"""
 ball = Product('Мяч', 'Футбольный мяч', 300.00, 10)
 racket = Product('Ракетка', 'Теннисная ракетка', 3000.00, 20)
 jacket = Product('Куртка', 'Куртка детская', 1500.90, 10)
@@ -17,17 +17,19 @@ cap = Product('Кепка', 'Кепка детская', 250.50, 5)
 category_1 = Category('Спорттовары', 'Товары для спорта', [ball, racket])
 # Создаем 2-й экземпляр категории и передаем параметры для инициализации
 category_2 = Category('Одежда', 'Одежда для спорта', [jacket, shorts, cap])
+category_3 = Category('Пустая', 'Нет товаров', [])
 
 
 #print(category_1.goods)
 data = {'name': 'Шляпа',
         'description': 'Просто шляпа',
-        'price': 250.50,
+        'price': 300.00,
         'quantity': 1}
 hat = Product.add_new_product(**data)
-print(hat.name)
+print(hat.quantity)
 category_1.add_product(hat)
-print(category_1.goods)
+print(category_3.average())
+print(category_3.goods)
 
 racket.price = -5.00
 print(racket.price)
